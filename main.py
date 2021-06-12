@@ -28,4 +28,13 @@ async def start(bot, update):
         disable_web_page_preview=True
     )
 
+@FayasNoushad.on_message(filters.private & filters.photo)
+async def glitchart(bot, update):
+    message = await update.reply_message("`Processing...`")
+    medianame = "./DOWNLOADS/" + str(update.from_user.id) + "/" + "glitchart.jpeg"
+    await update.download(file_name=medianame)
+    glitchart = glitchart.jpeg(medianame)
+    await update.reply_video(glitchart)
+    await message.delete()
+
 FayasNoushad.run()
