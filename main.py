@@ -33,9 +33,27 @@ async def start(bot, update):
 async def glitchart(bot, update):
     message = await update.reply_message("`Processing...`")
     medianame = "./DOWNLOADS/" + str(update.from_user.id) + "/glitchart.jpeg"
-    await update.download(file_name=medianame)
-    glitchart = glitchart.jpeg(medianame)
-    await update.reply_video(glitchart)
+    try:
+        await update.download(file_name=medianame)
+    except Exception as error:
+        print(error)
+        await message.edit("Something wrong. Contact @TheFayas.")
+        return
+    try:
+        glitchart = glitchart.jpeg(medianame)
+        try:
+            await os.remove(medianame)
+        except:
+            pass
+        video = await update.reply_video(glitchart)
+    except Exception as error:
+        print(error)
+        try:
+            await os.remove(medianame)
+        except:
+            pass
+        await message.edit("Something wrong. Contact @TheFayas.")
+        return
     await message.delete()
 
 FayasNoushad.run()
