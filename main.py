@@ -41,8 +41,8 @@ async def glitchart(bot, update):
         await message.edit_text("Something wrong. Contact @TheFayas.")
         return
     try:
-        glitchart = glitchart.jpeg(medianame)
-        video = await update.reply_video(glitchart)
+        glitchart_video = glitchart.jpeg(medianame)
+        video = await update.reply_video(glitchart_video)
         await os.remove(medianame)
     except Exception as error:
         print(error)
