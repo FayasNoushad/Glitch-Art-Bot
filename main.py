@@ -33,17 +33,16 @@ async def start(bot, update):
 @FayasNoushad.on_message(filters.private & filters.photo)
 async def glitchart(bot, update):
     message = await update.reply_text("`Processing...`")
-    medianame = "./DOWNLOADS/" + str(update.from_user.id) + "/glitchart.jpeg"
     try:
-        await update.download(file_name=medianame)
+        photo = await update.download()
     except Exception as error:
         print(error)
         await message.edit_text("Something wrong. Contact @TheFayas.")
         return
     try:
-        glitchart_video = glitchart.jpeg(medianame)
+        glitchart_video = glitchart.jpeg(photo)
         video = await update.reply_video(glitchart_video)
-        await os.remove(medianame)
+        os.remove(photo)
     except Exception as error:
         print(error)
         await message.edit_text("Something wrong. Contact @TheFayas.")
