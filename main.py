@@ -1,5 +1,6 @@
 import os
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 FayasNoushad = Client(
     "Glitch-Art-Bot",
@@ -31,7 +32,7 @@ async def start(bot, update):
 @FayasNoushad.on_message(filters.private & filters.photo)
 async def glitchart(bot, update):
     message = await update.reply_message("`Processing...`")
-    medianame = "./DOWNLOADS/" + str(update.from_user.id) + "/" + "glitchart.jpeg"
+    medianame = "./DOWNLOADS/" + str(update.from_user.id) + "/glitchart.jpeg"
     await update.download(file_name=medianame)
     glitchart = glitchart.jpeg(medianame)
     await update.reply_video(glitchart)
