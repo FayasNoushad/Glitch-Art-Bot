@@ -58,4 +58,3 @@ async def glitchart(bot, update):
     await message.delete()
 
 FayasNoushad.run()
-gggsggsgsgsgsg
