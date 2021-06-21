@@ -45,8 +45,8 @@ async def glitchart(bot, update):
         )
         return
     try:
-        glitchart = glitchart.jpeg(download_location)
-        await update.reply(glitchart)
+        glitch_art = glitchart.jpeg(download_location)
+        await update.reply(glitch_art)
         os.remove(download_location)
     except Exception as error:
         print(error)
