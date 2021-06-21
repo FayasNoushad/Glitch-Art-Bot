@@ -36,7 +36,6 @@ async def glitchart(bot, update):
     message = await update.reply_text("`Processing...`")
     try:
         await update.download(
-            message=update,
             file_name=download_location
         )
     except Exception as error:
