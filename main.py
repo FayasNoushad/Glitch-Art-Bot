@@ -31,7 +31,7 @@ async def start(bot, update):
     )
 
 @FayasNoushad.on_message(filters.private & filters.photo)
-async def glitchart(bot, update):
+async def glitch_art(bot, update):
     download_path = ".DOWNLOADS" + "/"
     download_location = download_path + str(update.from_user.id) + "/" + ".jpg"
     message = await update.reply_text(
