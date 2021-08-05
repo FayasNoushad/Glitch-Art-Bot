@@ -32,8 +32,8 @@ async def start(bot, update):
 
 @FayasNoushad.on_message(filters.private & filters.photo)
 async def glitch_art(bot, update):
-    download_path = ".DOWNLOADS" + "/"
-    download_location = download_path + str(update.from_user.id) + "/" + ".jpg"
+    download_path = ".DOWNLOADS" + "/" + str(update.from_user.id) + "/"
+    download_location = download_path + "photo.jpg"
     message = await update.reply_text(
         text="`Processing...`"
     )
