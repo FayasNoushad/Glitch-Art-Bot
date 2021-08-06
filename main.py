@@ -54,7 +54,7 @@ async def glitch_art(bot, update):
         glitch_art = glitchart.jpeg(download_location)
         glitch_art_path = download_path + "glitchart.jpg"
         with open(glitch_art_path, "wb") as file:
-            file.write(content)
+            file.write(glitch_art)
         await update.reply_photo(photo=glitch_art_path, quote=True)
         os.remove(download_location)
         os.remove(glitch_art_path)
