@@ -59,10 +59,9 @@ async def glitch_art(bot, update):
     )
     try:
         glitch_art = glitchart.jpeg(download_location)
-        glitch_art_path = download_path + "glitchart.jpg"
-        await update.reply_photo(photo=glitch_art_path, quote=True)
+        await update.reply_photo(photo=glitch_art, quote=True)
         os.remove(download_location)
-        os.remove(glitch_art_path)
+        os.remove(glitch_art)
     except Exception as error:
         await message.edit_text(
             text=f"**Error :** `{error}`\nContact @TheFayas."
