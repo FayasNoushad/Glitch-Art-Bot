@@ -50,9 +50,8 @@ async def glitch_art(bot, update):
             file_name=download_location
         )
     except Exception as error:
-        print(error)
         await message.edit_text(
-            text="Something wrong. Contact @TheFayas."
+            text=f"**Error :** `{error}`\nContact @TheFayas."
         )
         return 
     await message.edit_text(
@@ -67,9 +66,8 @@ async def glitch_art(bot, update):
         os.remove(download_location)
         os.remove(glitch_art_path)
     except Exception as error:
-        print(error)
         await message.edit_text(
-            text="Something wrong. Contact @TheFayas."
+            text=f"**Error :** `{error}`\nContact @TheFayas."
         )
         return
     await message.delete()
