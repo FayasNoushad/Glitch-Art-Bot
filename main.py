@@ -5,7 +5,7 @@ import glitchart
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-FayasNoushad = Client(
+Bot = Client(
     "Glitch-Art-Bot",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
@@ -24,7 +24,7 @@ START_BUTTONS = InlineKeyboardMarkup(
     ]]
 )
 
-@FayasNoushad.on_message(filters.private & filters.command(["start"]))
+@Bot.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
     await update.reply_text(
         text=START_TEXT.format(update.from_user.mention),
@@ -32,7 +32,7 @@ async def start(bot, update):
         disable_web_page_preview=True
     )
 
-@FayasNoushad.on_message(filters.private & filters.photo)
+@Bot.on_message(filters.private & filters.photo)
 async def glitch_art(bot, update):
     download_path = "./DOWNLOADS" + "/" + str(update.from_user.id) + "/"
     download_location = download_path + "photo.jpg"
@@ -68,4 +68,5 @@ async def glitch_art(bot, update):
         return
     await message.delete()
 
-FayasNoushad.run()
+
+Bot.run()
