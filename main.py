@@ -5,12 +5,14 @@ import glitchart
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+
 Bot = Client(
     "Glitch-Art-Bot",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"]
 )
+
 
 START_TEXT = """
 Hello {}, I am a photo to glitch art telegram bot.
@@ -24,6 +26,7 @@ START_BUTTONS = InlineKeyboardMarkup(
     ]]
 )
 
+
 @Bot.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
     await update.reply_text(
@@ -31,6 +34,7 @@ async def start(bot, update):
         reply_markup=START_BUTTONS,
         disable_web_page_preview=True
     )
+
 
 @Bot.on_message(filters.private & filters.photo)
 async def glitch_art(bot, update):
