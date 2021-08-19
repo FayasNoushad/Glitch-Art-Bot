@@ -32,7 +32,8 @@ async def start(bot, update):
     await update.reply_text(
         text=START_TEXT.format(update.from_user.mention),
         reply_markup=START_BUTTONS,
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
+        quote=True
     )
 
 
@@ -41,7 +42,8 @@ async def glitch_art(bot, update):
     download_path = "./DOWNLOADS" + "/" + str(update.from_user.id) + "/"
     download_location = download_path + "photo.jpg"
     message = await update.reply_text(
-        text="`Processing...`"
+        text="`Processing...`",
+        quote=True
     )
     try:
         await update.download(
