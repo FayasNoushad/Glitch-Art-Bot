@@ -1,3 +1,5 @@
+# Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
+
 import os
 import glitchart
 from pyrogram import Client, filters
