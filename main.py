@@ -14,18 +14,20 @@ Bot = Client(
 )
 
 
-START_TEXT = """
-Hello {}, I am a photo to glitch art telegram bot.
+START_TEXT = """Hello {},
+I am a photo to glitch art telegram bot.
 
-Made by @FayasNoushad
-"""
+Made by @FayasNoushad"""
 START_BUTTONS = InlineKeyboardMarkup(
-    [[
-        InlineKeyboardButton('Channel', url='https://telegram.me/FayasNoushad'),
-        InlineKeyboardButton('Feedback', url='https://telegram.me/TheFayas')
-    ]]
+    [
+        [
+            InlineKeyboardButton('Channel', url='https://telegram.me/FayasNoushad'),
+            InlineKeyboardButton('Feedback', url='https://telegram.me/TheFayas')
+        ]
+    ]
 )
 PATH = os.environ.get("PATH", "./DOWNLOADS")
+
 
 @Bot.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
