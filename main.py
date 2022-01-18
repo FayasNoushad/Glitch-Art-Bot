@@ -1,5 +1,3 @@
-# Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
-
 import os
 import glitchart
 from pyrogram import Client, filters
@@ -8,9 +6,9 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 Bot = Client(
     "Glitch-Art-Bot",
-    bot_token = os.environ["BOT_TOKEN"],
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"]
+    bot_token = os.environ.get("BOT_TOKEN"),
+    api_id = int(os.environ.get("API_ID")),
+    api_hash = os.environ.get("API_HASH")
 )
 
 
@@ -18,6 +16,7 @@ START_TEXT = """Hello {},
 I am a photo to glitch art telegram bot.
 
 Made by @FayasNoushad"""
+
 START_BUTTONS = InlineKeyboardMarkup(
     [
         [
@@ -26,6 +25,7 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]
     ]
 )
+
 PATH = os.environ.get("PATH", "./DOWNLOADS")
 
 
@@ -45,6 +45,7 @@ async def glitch_art(bot, update):
     download_location = download_path + "photo.jpg"
     message = await update.reply_text(
         text="`Processing...`",
+        disable_web_page_preview=True,
         quote=True
     )
     try:
@@ -53,20 +54,26 @@ async def glitch_art(bot, update):
         )
     except Exception as error:
         await message.edit_text(
-            text=f"**Error :** `{error}`\nContact @TheFayas."
+            text=f"**Error :** `{error}`\nContact @TheFayas.",
+            disable_web_page_preview=True
         )
         return 
     await message.edit_text(
-        text="`Converting to glitch...`"
+        text="`Converting to glitch art...`"
     )
     try:
         glitch_art = glitchart.jpeg(download_location)
-        await update.reply_photo(photo=glitch_art, quote=True)
+        await update.reply_photo(
+            photo=glitch_art,
+            caption=update.caption,
+            quote=True
+        )
         os.remove(download_location)
         os.remove(glitch_art)
     except Exception as error:
         await message.edit_text(
-            text=f"**Error :** `{error}`\nContact @TheFayas."
+            text=f"**Error :** `{error}`\nContact @TheFayas.",
+            disable_web_page_preview=True
         )
         return
     await message.delete()
