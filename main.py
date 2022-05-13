@@ -13,7 +13,8 @@ Bot = Client(
 
 
 START_TEXT = """Hello {},
-I am a photo to glitch art telegram bot.
+I am a photo to glitch art telegram bot. \
+Send a photo, I will send glitch art photo.
 
 Made by @FayasNoushad"""
 
@@ -41,6 +42,7 @@ async def start(bot, update):
 
 @Bot.on_message(filters.private & filters.photo)
 async def glitch_art(bot, update):
+    
     download_path = PATH + "/" + str(update.from_user.id) + "/"
     download_location = download_path + "photo.jpg"
     message = await update.reply_text(
@@ -48,6 +50,7 @@ async def glitch_art(bot, update):
         disable_web_page_preview=True,
         quote=True
     )
+    
     try:
         await update.download(
             file_name=download_location
@@ -57,7 +60,8 @@ async def glitch_art(bot, update):
             text=f"**Error :** `{error}`\nContact @TheFayas.",
             disable_web_page_preview=True
         )
-        return 
+        return
+    
     await message.edit_text(
         text="`Converting to glitch art...`"
     )
@@ -76,6 +80,7 @@ async def glitch_art(bot, update):
             disable_web_page_preview=True
         )
         return
+    
     await message.delete()
 
 
