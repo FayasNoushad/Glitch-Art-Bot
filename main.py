@@ -1,8 +1,11 @@
 import os
 import glitchart
+from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+
+load_dotenv()
 
 Bot = Client(
     "Glitch-Art-Bot",
@@ -57,7 +60,7 @@ async def glitch_art(bot, update):
         )
     except Exception as error:
         await message.edit_text(
-            text=f"**Error :** `{error}`\nContact @TheFayas.",
+            text=f"**Error :** `{error}`\nContact @FayasNoushad.",
             disable_web_page_preview=True
         )
         return
